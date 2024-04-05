@@ -60,8 +60,15 @@ const Error404 = () => {
 
     // load Adobe Animate script after CreateJS has loaded
     createJsScript.onload = () => {
+      // Now that CreateJS is loaded, load the Adobe Animate script
       const animateScript = document.createElement('script');
       animateScript.src = './404.js';
+      animateScript.onload = () => {
+        // now Adobe Animate script is loaded, initialise animation
+        if (window.init) {
+          window.init();
+        }
+      };
       document.body.appendChild(animateScript);
     };
 
@@ -70,7 +77,7 @@ const Error404 = () => {
       document.body.removeChild(createJsScript);
       // only remove the animateScript if it was added
       if (createJsScript.onload) {
-        const animateScript = document.querySelector('script[src="./404.js"]');
+        const animateScript = document.querySelector('script[src="/404.js"]');
         if (animateScript) {
           document.body.removeChild(animateScript);
         }

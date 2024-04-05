@@ -6,10 +6,9 @@ import Footer from '../components/Footer';
 export default function NotFound() {
   return (
     <div className="not-found-page">
-      <h1>404 Page Not Found</h1>
-      {/* <Header />
+      {/* <Header /> */}
       <Error404 />
-      <Footer /> */}
+      {/* <Footer /> */}
     </div>
   );
 }

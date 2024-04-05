@@ -17,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <NotFound />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/signup", element: <SignUpPage /> },
@@ -29,6 +28,7 @@ const router = createBrowserRouter([
       // { path: "/contact", element: <Contact /> },
       { path: "/workshops/:id", element: <IdeaDetail /> },
       // { path: "/ideas", element: <AllIdeaDetails /> },
+      { path: "*", element: <NotFound />} // catch all for 404 page to render on any path that does not match defined routes - must be last child to be effective
     ],
   },
 ]);

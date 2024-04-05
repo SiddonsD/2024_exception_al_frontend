@@ -24,7 +24,7 @@ const Error404 = () => {
       const anim_container = animContainerRef.current;
       const dom_overlay_container = domOverlayContainerRef.current;
 
-      const comp = AdobeAn.getComposition("AF46AB580DB29048BD31CD62E0AC8625");
+      comp = AdobeAn.getComposition("AF46AB580DB29048BD31CD62E0AC8625");
       const lib = comp.getLibrary();
       const loader = new createjs.LoadQueue(false);
       loader.addEventListener("fileload", handleFileLoad);
@@ -33,11 +33,15 @@ const Error404 = () => {
     };
 
     const handleFileLoad = (evt) => {
+      if (comp) {
       const images = comp.getImages();
       if (evt && (evt.item.type === "image")) {
         images[evt.item.id] = evt.result;
       }
-    };
+    } else {
+      console.error('Composition is not initialized');
+    }
+  };
 
     const handleComplete = (evt, comp) => {
       const lib = comp.getLibrary();

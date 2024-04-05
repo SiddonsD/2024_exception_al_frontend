@@ -7,6 +7,7 @@ const Error404 = () => {
 
   useEffect(() => {
     console.log('useEffect called'); // To check if useEffect is called
+
     // loads CreateJS library
     const createJsScript = document.createElement('script');
     createJsScript.src = 'https://code.createjs.com/1.0.0/createjs.min.js';
@@ -19,9 +20,9 @@ const Error404 = () => {
     // defines initiation code from 404.html and functions within useEffect
     const init = () => {
       console.log('init function called'); // To check if init is called
-      const canvas = document.getElementById("canvas");
-      const anim_container = document.getElementById("animation_container");
-      const dom_overlay_container = document.getElementById("dom_overlay_container");
+      const canvas = canvasRef.current;
+      const anim_container = animContainerRef.current;
+      const dom_overlay_container = domOverlayContainerRef.current;
       const comp = AdobeAn.getComposition("AF46AB580DB29048BD31CD62E0AC8625");
       const lib = comp.getLibrary();
       const loader = new createjs.LoadQueue(false);
@@ -72,7 +73,7 @@ const Error404 = () => {
     createJsScript.onload = () => {
       console.log('CreateJS script loaded'); // To check if CreateJS script is loaded
 
-      // Ensure the anim_container is available in the DOM
+      // ensure refs are available in the DOM
       if (animContainerRef.current && canvasRef.current && domOverlayContainerRef.current) {
         console.log('animContainerRef is available'); // To check if animContainerRef is available
 
@@ -84,14 +85,17 @@ const Error404 = () => {
         };
         animateScript.onload = () => {
           console.log('Adobe Animate script loaded'); // To check if Adobe Animate script is loaded
+          console.log('AdobeAn:', window.AdobeAn); // Check if AdobeAn is defined
           // now Adobe Animate script is loaded, initialise animation
-          if (window.init) {
+          if (window.AdobeAn && window.init) {
             window.init();
+          } else {
+            console.error('AdobeAn is not defined.');
           }
-      };
+        };
       document.body.appendChild(animateScript);
     } else {
-      console.error('animContainerRef is not available'); // To check if animContainerRef is not available
+      console.error('Refs are not available'); // To check if animContainerRef is not available
     }
   };
 
@@ -110,7 +114,7 @@ const Error404 = () => {
       window.handleFileLoad = undefined;
       window.handleComplete = undefined;
     };
-  }, [];
+  }, []);
 
   return (
     <div ref={animContainerRef} id="animation_container" style={{ backgroundColor: 'rgba(255, 255, 255, 1.00)', width: '1024px', height: '768px' }}>
@@ -119,6 +123,6 @@ const Error404 = () => {
       </div>
     </div>
   );
-});
-}
+};
+
 export default Error404;

@@ -65,7 +65,15 @@ const Error404 = () => {
       AdobeAn.makeResponsive(true, 'both', true, 1, [canvasRef.current, animContainerRef.current, domOverlayContainerRef.current]);
       AdobeAn.compositionLoaded(lib.properties.id);
       fnStartAnimation();
+
+      AdobeAn.getComposition("AF46AB580DB29048BD31CD62E0AC8625").getStage = () => stageRef.current;
     };
+
+    if (window.AdobeAn) {
+      window.AdobeAn.getComposition = window.AdobeAn.getComposition || (() => ({
+        getStage: () => stageRef.current,
+      }));
+    }
 
     // make functions globally available for Adobe Animate script to use
     window.init = init;

@@ -4,6 +4,7 @@ const Error404 = () => {
   const animContainerRef = useRef(null);
   const canvasRef = useRef(null);
   const domOverlayContainerRef = useRef(null);
+  const stageRef = useRef(null);
 
   useEffect(() => {
     let comp;
@@ -19,11 +20,6 @@ const Error404 = () => {
 
     // defines initiation code from 404.html and functions within useEffect
     const init = () => {
-      // Use the refs to get the DOM elements
-      const canvas = canvasRef.current;
-      const anim_container = animContainerRef.current;
-      const dom_overlay_container = domOverlayContainerRef.current;
-
       comp = AdobeAn.getComposition("AF46AB580DB29048BD31CD62E0AC8625");
       const lib = comp.getLibrary();
       const loader = new createjs.LoadQueue(false);
@@ -39,7 +35,7 @@ const Error404 = () => {
         images[evt.item.id] = evt.result;
       }
     } else {
-      console.error('Composition is not initialized');
+      console.error('Composition is not initialised');
     }
   };
 
@@ -57,6 +53,7 @@ const Error404 = () => {
       const exportRoot = new lib._404();
       const stage = new lib.Stage(canvas);
       stage.enableMouseOver();
+
       // Registers the "tick" event listener.
       const fnStartAnimation = () => {
         stage.addChild(exportRoot);
@@ -64,7 +61,7 @@ const Error404 = () => {
         createjs.Ticker.addEventListener("tick", stage);
       };
       // Code to support hidpi screens and responsive scaling.
-      AdobeAn.makeResponsive(true, 'both', true, 1, [canvas, anim_container, dom_overlay_container]);
+      AdobeAn.makeResponsive(true, 'both', true, 1, [canvasRef.current, animContainerRef.current, domOverlayContainerRef.current]);
       AdobeAn.compositionLoaded(lib.properties.id);
       fnStartAnimation();
     };

@@ -51,7 +51,8 @@ const Error404 = () => {
         });
       }
       const exportRoot = new lib._404();
-      const stage = new lib.Stage(canvas);
+      const stage = new lib.Stage(canvasRef.current);
+      stageRef.current = stage; 
       stage.enableMouseOver();
 
       // Registers the "tick" event listener.

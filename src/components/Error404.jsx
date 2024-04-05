@@ -91,7 +91,7 @@ const Error404 = () => {
       window.handleFileLoad = undefined;
       window.handleComplete = undefined;
     };
-  }, []);
+  }, [];
 
   return (
     <div ref={animContainerRef} id="animation_container" style={{ backgroundColor: 'rgba(255, 255, 255, 1.00)', width: '1024px', height: '768px' }}>
@@ -100,6 +100,6 @@ const Error404 = () => {
       </div>
     </div>
   );
-};
-
+});
+}
 export default Error404;

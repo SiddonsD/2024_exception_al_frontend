@@ -4,16 +4,10 @@ import Footer from "../components/Footer";
 
 export default function NotFound() {
   return (
-    <div>
-      <div className="bg-bg h-full font-poppins relative min-h-screen flex flex-col">
-        <header>
-          <Header />
-        </header>
-        <main className="flex-1">
-          <Error404 />
-        </main>
-        <Footer />
-      </div>
+    <div className="not-found-page">
+      <Header />
+      <Error404 />
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 
 const Error404 = () => {
+  const animContainerRef = useRef(null);
+
   useEffect(() => {
     // loads CreateJS library
     const createJsScript = document.createElement('script');
@@ -60,14 +62,16 @@ const Error404 = () => {
 
     // load Adobe Animate script after CreateJS has loaded
     createJsScript.onload = () => {
-      // Now that CreateJS is loaded, load the Adobe Animate script
-      const animateScript = document.createElement('script');
-      animateScript.src = './404.js';
-      animateScript.onload = () => {
-        // now Adobe Animate script is loaded, initialise animation
-        if (window.init) {
-          window.init();
-        }
+      // Ensure the anim_container is available in the DOM
+      if (animContainerRef.current && canvasRef.current && domOverlayContainerRef.current) {
+        // Now that CreateJS is loaded, load the Adobe Animate script
+        const animateScript = document.createElement('script');
+        animateScript.src = './404.js';
+        animateScript.onload = () => {
+          // now Adobe Animate script is loaded, initialise animation
+          if (window.init) {
+            window.init();
+          }
       };
       document.body.appendChild(animateScript);
     };
@@ -90,7 +94,7 @@ const Error404 = () => {
   }, []);
 
   return (
-    <div id="animation_container" style={{ backgroundColor: 'rgba(255, 255, 255, 1.00)', width: '1024px', height: '768px' }}>
+    <div ref={animContainerRef} id="animation_container" style={{ backgroundColor: 'rgba(255, 255, 255, 1.00)', width: '1024px', height: '768px' }}>
       <canvas id="canvas" width="1024" height="768" style={{ position: 'absolute', display: 'block', backgroundColor: 'rgba(255, 255, 255, 1.00)' }}></canvas>
       <div id="dom_overlay_container" style={{ pointerEvents: 'none', overflow: 'hidden', width: '1024px', height: '768px', position: 'absolute', left: '0px', top: '0px', display: 'block' }}>
       </div>

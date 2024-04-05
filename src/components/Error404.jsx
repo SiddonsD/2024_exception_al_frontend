@@ -66,14 +66,8 @@ const Error404 = () => {
       AdobeAn.compositionLoaded(lib.properties.id);
       fnStartAnimation();
 
-      AdobeAn.getComposition("AF46AB580DB29048BD31CD62E0AC8625").getStage = () => stageRef.current;
+      window.stage = stageRef.current;
     };
-
-    if (window.AdobeAn) {
-      window.AdobeAn.getComposition = window.AdobeAn.getComposition || (() => ({
-        getStage: () => stageRef.current,
-      }));
-    }
 
     // make functions globally available for Adobe Animate script to use
     window.init = init;
@@ -108,6 +102,7 @@ const Error404 = () => {
       window.init = undefined;
       window.handleFileLoad = undefined;
       window.handleComplete = undefined;
+      window.stage = undefined;
     };
   }, []);
 

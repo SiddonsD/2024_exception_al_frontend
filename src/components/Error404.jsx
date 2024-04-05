@@ -2,15 +2,23 @@ import React, { useEffect, useRef } from 'react';
 
 const Error404 = () => {
   const animContainerRef = useRef(null);
+  const canvasRef = useRef(null);
+  const domOverlayContainerRef = useRef(null);
 
   useEffect(() => {
+    console.log('useEffect called'); // To check if useEffect is called
     // loads CreateJS library
     const createJsScript = document.createElement('script');
     createJsScript.src = 'https://code.createjs.com/1.0.0/createjs.min.js';
     document.body.appendChild(createJsScript);
 
+    createJsScript.onerror = () => {
+      console.error('Failed to load CreateJS script'); // To check if the script failed to load
+    };
+
     // defines initiation code from 404.html and functions within useEffect
     const init = () => {
+      console.log('init function called'); // To check if init is called
       const canvas = document.getElementById("canvas");
       const anim_container = document.getElementById("animation_container");
       const dom_overlay_container = document.getElementById("dom_overlay_container");
@@ -62,19 +70,30 @@ const Error404 = () => {
 
     // load Adobe Animate script after CreateJS has loaded
     createJsScript.onload = () => {
+      console.log('CreateJS script loaded'); // To check if CreateJS script is loaded
+
       // Ensure the anim_container is available in the DOM
       if (animContainerRef.current && canvasRef.current && domOverlayContainerRef.current) {
+        console.log('animContainerRef is available'); // To check if animContainerRef is available
+
         // Now that CreateJS is loaded, load the Adobe Animate script
         const animateScript = document.createElement('script');
         animateScript.src = './404.js';
+        animateScript.onerror = () => {
+          console.error('Failed to load Adobe Animate script'); // To check if the script failed to load
+        };
         animateScript.onload = () => {
+          console.log('Adobe Animate script loaded'); // To check if Adobe Animate script is loaded
           // now Adobe Animate script is loaded, initialise animation
           if (window.init) {
             window.init();
           }
       };
       document.body.appendChild(animateScript);
-    };
+    } else {
+      console.error('animContainerRef is not available'); // To check if animContainerRef is not available
+    }
+  };
 
     // clean up scripts and global functions when component unmounts
     return () => {
@@ -95,8 +114,8 @@ const Error404 = () => {
 
   return (
     <div ref={animContainerRef} id="animation_container" style={{ backgroundColor: 'rgba(255, 255, 255, 1.00)', width: '1024px', height: '768px' }}>
-      <canvas id="canvas" width="1024" height="768" style={{ position: 'absolute', display: 'block', backgroundColor: 'rgba(255, 255, 255, 1.00)' }}></canvas>
-      <div id="dom_overlay_container" style={{ pointerEvents: 'none', overflow: 'hidden', width: '1024px', height: '768px', position: 'absolute', left: '0px', top: '0px', display: 'block' }}>
+      <canvas ref={canvasRef} id="canvas" width="1024" height="768" style={{ position: 'absolute', display: 'block', backgroundColor: 'rgba(255, 255, 255, 1.00)' }}></canvas>
+      <div ref={domOverlayContainerRef} id="dom_overlay_container" style={{ pointerEvents: 'none', overflow: 'hidden', width: '1024px', height: '768px', position: 'absolute', left: '0px', top: '0px', display: 'block' }}>
       </div>
     </div>
   );

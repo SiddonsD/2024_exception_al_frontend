@@ -1,13 +1,15 @@
 import React from 'react';
 import Button from './Button';
 
-export default function Error404() {
+function Error404() {
+  const backgroundImageStyle = {
+    backgroundImage: 'url("../404static.jpg")'
+  };
+
   return (
     <section
-      className="w-full h-screen flex flex-col items-center justify-center bg-center bg-cover text-white"
-      img
-      src="../404static.jpg"
-      alt="404 cartoon space scene with planets, astronaut and spaceship"
+      style={backgroundImageStyle}
+      className="w-full h-screen flex flex-col items-center justify-center bg-no-repeat bg-center bg-cover text-white"
     >
       <h1 className="text-5xl lg:text-6xl font-semibold">404</h1>
       <h2 className="text-3xl font-semibold mt-4">Lost your way?</h2>
@@ -23,3 +25,5 @@ export default function Error404() {
     </section>
   );
 }
+
+export default Error404;

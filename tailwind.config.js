@@ -27,7 +27,7 @@ export default {
         },
       },
       backgroundImage: {
-        'error-404': "url('/404static.png')",
+        'error-404': "url('./404static.png')",
       },
       flexBasis: {
         "1/2-gap-4": "calc(50% - 1rem)"

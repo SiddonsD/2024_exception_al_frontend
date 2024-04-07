@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from './Button';
-import image404 from '../women-holding-pottery.jpg';
 
 function Error404() {
     return (

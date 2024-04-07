@@ -1,12 +1,11 @@
 import React from 'react';
 import Button from './Button';
-import backgroundImage from '../404static.png';
 
-export function Error404() {
+export default function Error404() {
   return (
     <section
       className="w-full h-screen flex flex-col items-center justify-center bg-center bg-cover text-white"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: "url('/404static.png')" }} // Assuming the image is in the public folder at the root
     >
       <h1 className="text-5xl lg:text-6xl font-semibold">404</h1>
       <h2 className="text-3xl font-semibold mt-4">Lost your way?</h2>
@@ -22,5 +21,3 @@ export function Error404() {
     </section>
   );
 }
-
-export default Error404;

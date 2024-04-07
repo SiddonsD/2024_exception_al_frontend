@@ -5,7 +5,9 @@ export default function Error404() {
   return (
     <section
       className="w-full h-screen flex flex-col items-center justify-center bg-center bg-cover text-white"
-      style={{ backgroundImage: "url('https://creative-otter-e53c2a.netlify.app/404static.png')" }}
+      img
+      src="../404static.jpg"
+      alt="404 cartoon space scene with planets, astronaut and spaceship"
     >
       <h1 className="text-5xl lg:text-6xl font-semibold">404</h1>
       <h2 className="text-3xl font-semibold mt-4">Lost your way?</h2>

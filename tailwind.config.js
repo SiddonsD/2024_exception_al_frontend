@@ -26,9 +26,6 @@ export default {
           600: '#717D96'
         },
       },
-      backgroundImage: {
-        'error-404': "url('./404static.png')",
-      },
       flexBasis: {
         "1/2-gap-4": "calc(50% - 1rem)"
       },

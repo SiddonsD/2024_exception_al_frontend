@@ -4,11 +4,11 @@ import Button from './Button';
 function Error404() {
   return (
     <section className="w-full min-h-screen flex flex-col items-center justify-center text-white relative">
-      <div className="w-full h-0 pb-[56.25%] relative z-0 overflow-hidden">
+      <div className="w-full h-full absolute top-0 left-0 z-0 overflow-hidden">
         <iframe
           src="/404.html"
           title="404 Animated Background"
-          className="absolute top-0 left-0 w-full h-full"
+          className="w-full h-full"
           frameBorder="0"
           scrolling="no"
         ></iframe>
@@ -28,4 +28,4 @@ function Error404() {
   );
 }
 
-export default Error404
+export default Error404;

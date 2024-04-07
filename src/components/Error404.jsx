@@ -3,14 +3,16 @@ import Button from './Button';
 
 function Error404() {
   return (
-    <section className="w-full h-screen flex flex-col items-center justify-center text-white">
-      <iframe
-        src="../404.html"
-        title="404 Animated Background"
-        className="w-full h-full object-cover absolute top-0 left-0 z-0"
-        frameBorder="0"
-      ></iframe>
-      <div className="z-10">
+    <section className="w-full min-h-screen flex flex-col items-center justify-center text-white">
+      <div className="w-full h-full absolute top-0 left-0 z-0 overflow-hidden">
+        <iframe
+          src="/404animation/404.html"
+          title="404 Animated Background"
+          className="w-full h-full object-cover"
+          frameBorder="0"
+        ></iframe>
+      </div>
+      <div className="z-10 py-16">
         <h1 className="text-5xl lg:text-6xl font-semibold">404</h1>
         <h2 className="text-3xl font-semibold mt-4">Lost your way?</h2>
         <p className="text-2xl mt-4 mb-6">

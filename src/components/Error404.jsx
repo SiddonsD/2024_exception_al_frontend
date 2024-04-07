@@ -3,10 +3,6 @@ import Button from './Button';
 import image404 from '../404static.jpg';
 
 function Error404() {
-  const backgroundImageStyle = {
-    backgroundImage: 'url("../404static.jpg")'
-  };
-
   return (
     <section
       style={{ backgroundImage: `url(${image404})` }}

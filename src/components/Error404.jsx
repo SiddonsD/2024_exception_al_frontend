@@ -5,7 +5,7 @@ function Error404() {
     return (
       <section className="w-full h-screen flex flex-col items-center justify-center text-white">
         <img
-          src="../path/to/your/404-image.jpg"
+          src="../404static.png"
           alt="404 Error"
           className="w-full h-full object-cover absolute top-0 left-0 z-0"
         />

@@ -2,8 +2,11 @@ import Button from "./Button";
 
 export function Error404() {
   return (
-    <div className="#FFFFF8 flex justify-center">
-      <section className="px-4 py-16 flex justify-center items-center space-x-10 container">
+    <div className="flex-col justify-center items-center">
+        <img
+          src="../404static.jpg"
+          alt="404 cartoon space scene with astronaut, rocket and planets"
+        />
         <section className="py-16">
           <h1 className="lg:text-6xl md:text-6xl sm: text-4xl"> 404 </h1>
           <h2 className="text-2xl font-semibold"> Lost your way? </h2>
@@ -15,12 +18,7 @@ export function Error404() {
             </Button>
           </div>
         </section>
-        <img
-          src="../404static.jpg"
-          alt="404 cartoon space scene with astronaut, rocket and planets"
-          className="max-w-lg hidden lg:block"
-        />
-      </section>
+
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import backgroundImage from '../404static.png')
+import backgroundImage from '../404static.png';
 
 export function Error404() {
   return (

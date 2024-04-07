@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import image404 from '../404static.jpg';
 
 function Error404() {
   const backgroundImageStyle = {
@@ -8,7 +9,7 @@ function Error404() {
 
   return (
     <section
-      style={backgroundImageStyle}
+      style={{ backgroundImage: `url(${image404})` }}
       className="w-full h-screen flex flex-col items-center justify-center bg-no-repeat bg-center bg-cover text-white"
     >
       <h1 className="text-5xl lg:text-6xl font-semibold">404</h1>

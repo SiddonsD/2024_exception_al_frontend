@@ -5,7 +5,7 @@ function Error404() {
     return (
       <section className="w-full h-screen flex flex-col items-center justify-center text-white">
         <img
-          src="../404static.png"
+          src="/404static.png"
           alt="404 Error page of cartoon space scene with astronaut and spaceship"
           className="w-full h-full object-cover absolute top-0 left-0 z-0"
         />

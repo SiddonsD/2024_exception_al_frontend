@@ -5,13 +5,13 @@ function Error404() {
   return (
     <section className="w-full min-h-screen flex flex-col items-center justify-center text-white relative">
       <div className="w-full h-full absolute top-0 left-0 z-0 overflow-hidden">
-        <iframe
+        <img
           src="/404-static.png"
           title="404 Static Background"
           className="w-full h-full"
           frameBorder="0"
           scrolling="no"
-        ></iframe>
+        ></img>
       </div>
       <div className="z-10 py-16 text-center">
         <h1 className="text-5xl lg:text-6xl font-semibold">404</h1>

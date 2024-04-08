@@ -3,7 +3,7 @@ import Button from './Button';
 
 function Error404() {
   return (
-    <section className="w-full flex items-center justify-center text-white relative">
+    <section className="w-full min-h-screen sm:min-h-0 sm:py-20 flex items-center justify-center text-white relative">
       <div className="absolute inset-0">
         <img
           src="/404-static.png"
@@ -18,7 +18,7 @@ function Error404() {
           The page you are looking for has moved to a galaxy far, far away...
         </p>
         <p className="text-lg sm:text-xl mb-6">Let's get you home to safety.</p>
-        <Button buttonType="link" href="/home" size="md" buttonStyle="white">
+        <Button buttonType="link" href="/" size="md" buttonStyle="white">
           Take me home!
         </Button>
       </div>

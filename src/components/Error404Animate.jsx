@@ -6,8 +6,8 @@ function Error404() {
     <section className="w-full min-h-screen flex flex-col items-center justify-center text-white relative">
       <div className="w-full h-full absolute top-0 left-0 z-0 overflow-hidden">
         <iframe
-          src="/404-static.png"
-          title="404 Static Background"
+          src="/404.html"
+          title="404 Animated Background"
           className="w-full h-full"
           frameBorder="0"
           scrolling="no"
